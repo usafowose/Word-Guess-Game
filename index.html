@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Word Guess Game</title>
-    <style src="/Assets/CSS/style.css"></style>    
-    <script src="/Assets/Javascript/game.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Word Guess Game</title>
+  <style src="/Assets/CSS/style.css"></style>
+  <!-- <script src="/Assets/Javascript/game.js"></script> -->
 </head>
 
 
@@ -24,14 +25,14 @@
   </div>
 
   <script type="text/javascript">
-    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+
     var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
     // Creating variables to hold the number of wins, losses, and ties. They start at 0.
     var wins = 0;
     var losses = 0;
     var ties = 0;
-    var lettersPicked = 0 
+    var lettersPicked = 0
 
     // Create variables that hold references to the places in the HTML where we want to display things.
     var directionsText = document.getElementById("directions-text");
@@ -42,40 +43,44 @@
     var tiesText = document.getElementById("ties-text");
 
     // This function is run whenever the user presses a key.
-    document.onkeyup = function(event) {
-
-      // Determines which key was pressed.
-      var userGuess = event.key;
-
-
+    document.onkeyup = function (event) {
       // Randomly chooses a choice from the options array. This is the Computer's guess.
       var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+      // Determines which key was pressed.
+      var userGuess = event.key;
+      console.log(`Computer Chose ${computerGuess} and the user chose ${userGuess}`);
+      userChoiceText.textContent = "You chose: " + userGuess;
+      computerChoiceText.textContent = "The computer chose: " + computerGuess;
+      winsText.textContent = "wins: " + wins;
+      lossesText.textContent = "losses: " + losses;
+      // tiesText.textContent = "ties: " + ties;
 
-      
-
-      if ((userGuess === computerChoices[0..25])) {
-
-        if ((userGuess === computerChoices && computerGuess === userGuess)
-         ) {
+      if (userGuess === computerChoices[0] || [1] || [2] || [3] || [4] || [5] || [6] || [7] || [8] || [9] || [10] || [11] || [12] || [13] | [14] || [15] || [16] || [17] || [18] || [19] || [20] || [21] || [22] || [23] || [24] || [25]) {
+        if (userGuess === computerGuess) {
           wins++;
-        } else if (userGuess === computerGuess) {
-          ties++;
-        } else {
-          losses++;
+          console.log(wins);
+          console.log("Were in the game, baby")
         }
+        else {
+          losses++;
+          console.log('You must enter a letter for the game to start.')
+        }
+      };
+      // var gameBegin = function () {
+      //   if (computerGuess === userGuess) {
+      //     wins++;
+      //   } else {
+      //     losses++;
+      //   }
+      //   console.log(`${wins}`)
+      //   directionsText.textContent = "";
+      // };
 
-        
-        directionsText.textContent = "";
 
-        // Display the user and computer guesses, and wins/losses/ties.
-        userChoiceText.textContent = "You chose: " + userGuess;
-        computerChoiceText.textContent = "The computer chose: " + computerGuess;
-        winsText.textContent = "wins: " + wins;
-        lossesText.textContent = "losses: " + losses;
-        tiesText.textContent = "ties: " + ties;
+      // Display the user and computer guesses, and wins/losses/ties.
 
-      }
-    };
+
+    }
   </script>
 
 </body>
