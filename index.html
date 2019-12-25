@@ -14,7 +14,8 @@
 <body>
 
   <div>
-    <p id="directions-text">I'm thinking of a letter. Let's begin. Press any letter! </p>
+    <p id="directions-text">I'm thinking of a letter. Let's begin. Press any letter! You can always press 'Backspace' to
+      restart the game. </p>
     <p id="userchoice-text"></p>
     <p id="computerchoice-text"></p>
     <p id="wins-text"></p>
@@ -28,11 +29,13 @@
 
     var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
+    var resetButton = "Backspace";
+
     // Creating variables to hold the number of wins, losses, and ties. They start at 0.
     var wins = 0;
     var losses = 0;
     var ties = 0;
-    var lettersPicked = 0
+    var lettersPicked = 0;
 
     // Create variables that hold references to the places in the HTML where we want to display things.
     var directionsText = document.getElementById("directions-text");
@@ -41,21 +44,36 @@
     var winsText = document.getElementById("wins-text");
     var lossesText = document.getElementById("losses-text");
     var tiesText = document.getElementById("ties-text");
+    var pickedText = document.getElementById("letters-picked");
+
+    var resetGame = function () {
+      wins = 0;
+      losses = 0;
+      ties = 0;
+      lettersPicked = 0;
+      alert('You have restarted the game.');
+    };
 
     // This function is run whenever the user presses a key.
     document.onkeyup = function (event) {
       // Randomly chooses a choice from the options array. This is the Computer's guess.
       var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
       // Determines which key was pressed.
+      lettersPicked++;
       var userGuess = event.key;
       console.log(`Computer Chose ${computerGuess} and the user chose ${userGuess}`);
       userChoiceText.textContent = "You chose: " + userGuess;
       computerChoiceText.textContent = "The computer chose: " + computerGuess;
       winsText.textContent = "wins: " + wins;
       lossesText.textContent = "losses: " + losses;
+      pickedText.textContent = "Letters Picked: " + lettersPicked;
       // tiesText.textContent = "ties: " + ties;
+      if (userGuess == resetButton) {
 
-      if (userGuess === computerChoices[0] || [1] || [2] || [3] || [4] || [5] || [6] || [7] || [8] || [9] || [10] || [11] || [12] || [13] | [14] || [15] || [16] || [17] || [18] || [19] || [20] || [21] || [22] || [23] || [24] || [25]) {
+        resetGame();
+
+      } else if (userGuess === computerChoices[0] || [1] || [2] || [3] || [4] || [5] || [6] || [7] || [8] || [9] || [10] || [11] || [12] || [13] | [14] || [15] || [16] || [17] || [18] || [19] || [20] || [21] || [22] || [23] || [24] || [25]) {
+
         if (userGuess === computerGuess) {
           wins++;
           console.log(wins);
